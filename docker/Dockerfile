@@ -2,7 +2,7 @@ FROM openjdk:8-jre-alpine
 
 VOLUME /tmp
 
-ARG JAR_FILE=docker/kiven.jar
+ARG JAR_FILE=kiven-1.0.0.jar
 ARG PORT=8090
 ARG TIME_ZONE=Asia/Shanghai
 
@@ -13,4 +13,4 @@ COPY ${JAR_FILE} kiven.jar
 
 EXPOSE ${PORT}
 
-ENTRYPOINT java ${JAVA_OPTS} -Djava.security.egd=file:/dev/./urandom -server -jar kiven.jar
+ENTRYPOINT java ${JAVA_OPTS} -Djava.security.egd=file:/dev/./uraserver -jar kiven.jar
