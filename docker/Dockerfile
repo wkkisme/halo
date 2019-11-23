@@ -2,15 +2,15 @@ FROM openjdk:8-jre-alpine
 
 VOLUME /tmp
 
-ARG JAR_FILE=build/libs/halo.jar
+ARG JAR_FILE=docker/kiven.jar
 ARG PORT=8090
 ARG TIME_ZONE=Asia/Shanghai
 
 ENV TZ=${TIME_ZONE}
 ENV JAVA_OPTS="-Xms256m -Xmx256m"
 
-COPY ${JAR_FILE} halo.jar
+COPY ${JAR_FILE} kiven.jar
 
 EXPOSE ${PORT}
 
-ENTRYPOINT java ${JAVA_OPTS} -Djava.security.egd=file:/dev/./urandom -server -jar halo.jar
+ENTRYPOINT java ${JAVA_OPTS} -Djava.security.egd=file:/dev/./urandom -server -jar kiven.jar
