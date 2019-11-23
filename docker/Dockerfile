@@ -13,4 +13,4 @@ COPY ${JAR_FILE} kiven.jar
 
 EXPOSE ${PORT}
 
-ENTRYPOINT java ${JAVA_OPTS} -Djava.security.egd=file:/dev/./uraserver -jar kiven.jar
+ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/app.jar", "--spring.profiles.active=dev"]
