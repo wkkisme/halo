@@ -43,7 +43,7 @@ import static run.halo.app.model.support.HaloConst.HALO_ADMIN_RELATIVE_PATH;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "run.halo.app.controller")
-@PropertySource(value = "classpath:application.yaml", ignoreResourceNotFound = true, encoding = "UTF-8")
+@PropertySource(value = "classpath:application-dev.properties", ignoreResourceNotFound = true, encoding = "UTF-8")
 public class WebMvcAutoConfiguration implements WebMvcConfigurer {
 
     private static final String FILE_PROTOCOL = "file:///";

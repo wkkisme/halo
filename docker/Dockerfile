@@ -1,16 +1,27 @@
-FROM openjdk:8-jre-alpine
+FROM openjdk:8-jdk-alpine
 
 VOLUME /tmp
 
-ARG JAR_FILE=kiven-1.0.0.jar
 ARG PORT=8090
+
 ARG TIME_ZONE=Asia/Shanghai
 
-ENV TZ=${TIME_ZONE}
-ENV JAVA_OPTS="-Xms256m -Xmx256m"
+ARG DEPENDENCY=target/dependency
 
-COPY ${JAR_FILE} kiven.jar
+ENV TZ=${TIME_ZONE}
 
 EXPOSE ${PORT}
 
-ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/app.jar", "--spring.profiles.active=dev"]
+
+
+COPY ${DEPENDENCY}/BOOT-INF/lib /app/lib
+
+COPY ${DEPENDENCY}/META-INF /app/META-INF
+
+COPY ${DEPENDENCY}/BOOT-INF/classes /app
+
+
+
+
+
+ENTRYPOINT ["java","-cp","app:app/lib/*","run.halo.app.Application"]
